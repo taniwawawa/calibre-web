@@ -932,7 +932,7 @@ def get_metadata_calibre_companion(uuid):
 
 
 @app.route("/ajax/getcomic/<int:book_id>/<book_format>/<int:page>")
-@login_required
+@requires_basic_auth_if_no_ano
 def get_comic_book(book_id, book_format, page):
     book = db.session.query(db.Books).filter(db.Books.id == book_id).first()
     if not book:
